@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Módulo Sistema Operacional Linux</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #466D1D, #9CE553);
+            overflow: hidden;
+            color: #e5e5e5;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://static.vecteezy.com/ti/vetor-gratis/p2/7016698-onda-textura-fundo-abstrato-vetor.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.07;
+            z-index: 1;
+        }
+
+        .matrix {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .matrix span {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: #005f00fc;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            animation: drop 3s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes drop {
+            0% {
+                transform: translateY(-100%);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+        }
+
+        .lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            opacity: 0.5;
+            z-index: 3;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: rgba(42, 42, 42, 0.9);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            z-index: 4;
+        }
+
+        .container h1 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .container p {
+            margin: 10px 0;
+        }
+
+        .container img {
+            margin-top: 20px;
+        }
+
+        .container img.logo {
+            max-width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-image"></div>
+    <div class="matrix"></div>
+    <div class="lines"></div>
+    <div class="container">
+        <h1>Olá, seja Bem Vindo ao Servidor!</h1>
+        <p>Ada Tech - Sistema Operacional Linux</p>
+        <p>Aluno: Gabriel Souza Fonseca</p>
+        <p>Matrícula: 1182019</p>
+        <a href="" target="_blank">
+            <img src="https://lms-ada-assets.s3.sa-east-1.amazonaws.com/logo_small.svg" alt="Logo da Ada" class="logo">
+        </a>
+    </div>
+
+    <script>
+        const matrix = document.querySelector('.matrix');
+        const columns = Math.floor(window.innerWidth / 20);
+
+        for (let i = 0; i < columns; i++) {
+            const span = document.createElement('span');
+            span.style.left = `${i * 20}px`;
+            span.style.animationDuration = `${Math.random() * 2 + 1}s`;
+            matrix.appendChild(span);
+
+            setInterval(() => {
+                span.innerText = Math.random() > 0.5 ? '1' : '0';
+                span.style.top = `${Math.random() * window.innerHeight}px`;
+            }, 100);
+        }
+    </script>
+</body>
+</html>
